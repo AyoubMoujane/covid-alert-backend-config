@@ -1,0 +1,71 @@
+server:
+  port: 8090
+eureka:
+  instance:
+    instance-id: ${spring.application.name}-${random.uuid}
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-service:8761/eureka/
+
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+ribbon:
+  eureka:
+    enabled: false
+
+spring:
+  application:
+    name: api-gateway
+  main:
+    allow-bean-definition-overriding: true
+    web-application-type: reactive
+  cloud:
+    gateway:
+      default-filters: TokenRelay
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      metrics:
+        enabled: true
+      routes:
+          - id: user-service
+            predicates:
+              - Path=/users
+            uri: lb://user-service
+          - id: location-service
+            predicates:
+              - Path=/locations
+            uri: lb://location-service
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedHeaders:
+              - content-type
+            allowedMethods:
+              - GET
+              - POST
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak:8080/auth/realms/microservices-realm
+        registration:
+          spring-cloud-gateway-client:
+            authorization-grant-type: client_credentials
+            client-id: spring-cloud-gateway-client
+            client-secret: dev-secret-1
+            provider: keycloak
+            scope: openid, profile, roles
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/auth/realms/microservices-realm
+          jwk-set-uri: http://keycloak:8080/auth/realms/microservices-realm/protocol/openid-connect/certs
