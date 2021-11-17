@@ -43,6 +43,10 @@ spring:
             predicates:
               - Path=/locations
             uri: lb://location-service
+          - id: vaccination-service
+            predicates:
+              - Path=/vaccinations/**
+            uri: lb://vaccination-service
       globalcors:
         corsConfigurations:
           '[/**]':
