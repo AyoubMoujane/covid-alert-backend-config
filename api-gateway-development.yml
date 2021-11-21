@@ -41,12 +41,16 @@ spring:
             uri: lb://user-service
           - id: location-service
             predicates:
-              - Path=/locations
+              - Path=/locations/**
             uri: lb://location-service
           - id: vaccination-service
             predicates:
               - Path=/vaccinations/**
             uri: lb://vaccination-service
+          - id: covidtest-service
+            predicates:
+              - Path=/covidtests/**
+            uri: lb://covidtest-service
       globalcors:
         corsConfigurations:
           '[/**]':
