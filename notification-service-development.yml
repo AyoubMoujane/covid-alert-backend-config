@@ -3,6 +3,8 @@ server:
 
 spring:
   kafka:
+    application:
+      name: notification-service
     bootstrap-servers: kafka:9092
     consumer:
       auto-offset-reset: earliest
