@@ -18,7 +18,6 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: none
-
   kafka:
     bootstrap-servers: kafka:9092
     consumer:
