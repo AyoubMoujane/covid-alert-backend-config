@@ -58,7 +58,7 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: ["http://localhost:3000", "http://ec2-54-242-158-115.compute-1.amazonaws.com:3000"]
+            allowedOrigins: ["http://localhost:3000", "http://ec2-54-147-172-74.compute-1.amazonaws.com:3000"]
             allowedHeaders:
               - content-type
             allowedMethods:
