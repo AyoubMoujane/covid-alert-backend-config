@@ -21,6 +21,3 @@ spring:
       bootstrap-servers: kafka:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-
-env:
-  webFrontOrigin: "http://ec2-54-147-172-74.compute-1.amazonaws.com:3000"
