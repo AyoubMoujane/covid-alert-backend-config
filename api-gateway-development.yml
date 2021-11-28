@@ -64,6 +64,8 @@ spring:
             allowedMethods:
               - GET
               - POST
+              - DELETE
+              - PUT
   security:
     oauth2:
       client:
