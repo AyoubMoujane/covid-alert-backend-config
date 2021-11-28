@@ -23,4 +23,4 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 env:
-  webFrontOrigin: "http://ec2-54-242-158-115.compute-1.amazonaws.com:3000"
+  webFrontOrigin: "http://ec2-54-147-172-74.compute-1.amazonaws.com:3000"
